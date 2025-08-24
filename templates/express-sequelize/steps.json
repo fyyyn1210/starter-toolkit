@@ -1,0 +1,41 @@
+{
+  "steps": [
+    {
+      "step": 1,
+      "title": "Navigate to project directory",
+      "command": "cd {{projectName}}",
+      "description": "Enter the project folder that was just created"
+    },
+    {
+      "step": 2,
+      "title": "Install dependencies",
+      "command": "npm install",
+      "description": "Install all required Node.js packages",
+      "estimatedTime": "1-2 minutes"
+    },
+    {
+      "step": 3,
+      "title": "Setup environment variables",
+      "command": "cp .env.example .env",
+      "description": "Copy environment template and configure your database connection",
+      "manual": true,
+      "notes": [
+        "Edit .env file with your database credentials"
+      ]
+    },
+    {
+      "step": 4,
+      "title": "Setup Database configuration",
+      "description": "Edit database.config.json file with your database credentials",
+      "manual": true
+    },
+    {
+      "step": 5,
+      "title": "Start development server",
+      "command": "npm run dev",
+      "description": "Start the server in development mode",
+      "finalStep": true,
+      "successMessage": "🚀 Your API is running at http://localhost:3001"
+    }
+  ]
+}
