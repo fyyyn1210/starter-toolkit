@@ -17,3 +17,19 @@ export interface TemplateFile {
 export interface ProjectOptions {
   stack: string;
 }
+export interface Step {
+  step           : number;
+  title          : string;
+  command        : string;
+  description    : string;
+  estimatedTime ?: string;
+  manual        ?: boolean;
+  notes         ?: string[];
+  condition     ?: string;
+  finalStep     ?: boolean;
+  successMessage?: string;
+}
+
+export interface StepData {
+  steps: Step[];
+}

@@ -65,13 +65,13 @@ starter-toolkit create test-project
 
 1. Create a new folder in `templates/`
 2. Add your template files with Handlebars variables
-3. Create `template.config.js` with configuration
+3. Create `steps.json` ( step-by-step )
 
 
 Example template structure:
 ```
 templates/my-custom-stack/
-├── template.config.js
+├── steps.json
 ├── package.json
 ├── src/
 │   └── index.js

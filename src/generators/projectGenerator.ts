@@ -16,17 +16,11 @@ export async function generateProject(projectName: string, options: ProjectOptio
   // Create project directory
   await fs.ensureDir(projectPath);
 
-  // Load template config
-  const configPath = path.join(templatePath, 'template.config.js');
-  const templateConfig: TemplateConfig = require(configPath);
-
   console.log(chalk.blue('📁 Copying template files...'));
 
   // Copy and process template files
   await copyTemplate(templatePath, projectPath, { projectName, ...options });
 
-  // Generate package.json
-  await generatePackageJson(projectPath, projectName, templateConfig, options);
 
   console.log(chalk.green('✨ Files generated successfully!'));
 }
@@ -39,45 +33,33 @@ async function copyTemplate(
   const templateFiles = await fs.readdir(templatePath);
 
   for (const file of templateFiles) {
-    if (file === 'template.config.js') continue;
+    if (file === 'steps.json') continue;
 
     const sourcePath = path.join(templatePath, file);
     const destPath = path.join(projectPath, file);
-
     const stat = await fs.stat(sourcePath);
 
     if (stat.isDirectory()) {
       await fs.ensureDir(destPath);
       await copyTemplate(sourcePath, destPath, context);
     } else {
-      // Process template file
-      const content = await fs.readFile(sourcePath, 'utf8');
-      const template = handlebars.compile(content);
-      const processedContent = template(context);
+      const ext = path.extname(file);
+      const isTextFile = /\.(hbs|ts|js|json|env|md|html|txt)$/.test(ext);
 
-      await fs.writeFile(destPath, processedContent);
+      if (isTextFile) {
+        try {
+          const content = await fs.readFile(sourcePath, 'utf8');
+          const template = handlebars.compile(content);
+          const processedContent = template(context);
+          await fs.writeFile(destPath, processedContent);
+        } catch (err) {
+          console.error(`Error processing template: ${sourcePath}`);
+          throw err;
+        }
+      } else {
+        // Copy binary or non-template file as-is
+        await fs.copyFile(sourcePath, destPath);
+      }
     }
   }
-}
-
-async function generatePackageJson(
-  projectPath: string,
-  projectName: string,
-  config: TemplateConfig,
-  options: ProjectOptions
-) {
-  const packageJson = {
-    name: projectName,
-    version: '1.0.0',
-    description: '',
-    main: 'index.js',
-    scripts: config.scripts,
-    dependencies: config.dependencies,
-    devDependencies: config.devDependencies
-  };
-
-  await fs.writeFile(
-    path.join(projectPath, 'package.json'),
-    JSON.stringify(packageJson, null, 2)
-  );
 }
