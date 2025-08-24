@@ -1,0 +1,54 @@
+{
+  "name": "starter-toolkit",
+  "version": "1.0.0",
+  "description": "CLI tool to generate starter projects with popular tech stacks",
+  "main": "dist/index.js",
+  "bin": {
+    "starter-toolkit": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --exec \"npm run build && node dist/index.js\"",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "generator",
+    "boilerplate",
+    "starter",
+    "template",
+    "nodejs",
+    "express",
+    "prisma",
+    "laravel",
+    "react"
+  ],
+  "author": "R Putera Pratama riosraskaa@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fyyyn1210/starter-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fyyyn1210/starter-toolkit/issues"
+  },
+  "homepage": "https://github.com/fyyyn1210/starter-toolkit#readme",
+  "files": [
+    "dist/",
+    "templates/",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/fs-extra": "^11.0.4",
+    "@types/handlebars": "^4.0.40"
+  },
+  "dependencies": {
+    "chalk": "^5.6.0",
+    "commander": "^14.0.0",
+    "fs-extra": "^11.3.1",
+    "handlebars": "^4.7.8",
+    "inquirer": "^12.9.3"
+  }
+}
