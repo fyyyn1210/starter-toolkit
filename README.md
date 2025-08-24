@@ -27,11 +27,9 @@ starter-toolkit create my-project
 
 ## Available Templates
 
-| Template | Description | Core Technologies | Database Options | Auth Support |
-|----------|-------------|-------------------|------------------|--------------|
-| 🟢 **Node.js + Express + Prisma** | REST API with modern ORM | Express.js, Prisma, CORS | PostgreSQL, MySQL, MongoDB | JWT Authentication |
-| 🔴 **Laravel + MySQL** | Full-featured PHP web app | Laravel Framework, Eloquent ORM | MySQL | Authentication scaffolding |
-| ⚛️ **React + Vite + TypeScript** | Modern frontend setup | React 18, Vite, TypeScript | - | - |
+| Template | Description | Core Technologies | Auth Support |
+|----------|-------------|-------------------|--------------|
+| 🟢 **Node.js + Express + Sequelize** | REST API with modern ORM | Express.js, Sequelize, PostgreSQL | No |
 
 
 ## Requirements
