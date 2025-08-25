@@ -73,8 +73,8 @@ export async function createProject(projectName: string) {
           console.log(chalk.green.bold(`\n   ${step.successMessage}`));
         }
 
-        console.log("---");
       });
+      console.log(chalk.gray("─".repeat(50)));
     } catch (e) {}
   } catch (error) {
     console.error(chalk.red("❌ Failed creating project"), error);

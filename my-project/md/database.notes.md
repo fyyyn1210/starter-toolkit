@@ -1,0 +1,5 @@
+- migrate : "npx sequelize-cli db:migrate"
+- rollback: "npx sequelize-cli db:migrate:undo"
+- rollback: all: "npx sequelize-cli db:migrate:undo:all"
+- fresh   : "npx sequelize-cli db:migrate:undo:all ; npx sequelize-cli db:migrate"
+- create  : "npx sequelize-cli migration:generate --name [name]"
