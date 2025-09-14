@@ -75,9 +75,12 @@ export async function createProject(projectName: string) {
 
       });
       console.log(chalk.gray("─".repeat(50)));
-    } catch (e) {}
+    } catch (e) {
+      process.exit(1);
+    }
   } catch (error) {
     console.error(chalk.red("❌ Failed creating project"), error);
+  } finally{
     process.exit(1);
   }
   function initStacks() {

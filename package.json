@@ -1,6 +1,6 @@
 {
   "name": "starter-toolkit",
-  "version": "1.0.3",
+  "version": "2.0.1",
   "description": "CLI tool to generate starter projects with popular tech stacks",
   "main": "dist/index.js",
   "bin": {
@@ -42,13 +42,15 @@
   "devDependencies": {
     "@types/chalk": "^0.4.31",
     "@types/fs-extra": "^11.0.4",
-    "@types/handlebars": "^4.0.40"
+    "@types/handlebars": "^4.0.40",
+    "@types/tar-stream": "^3.1.4"
   },
   "dependencies": {
     "chalk": "^5.6.0",
     "commander": "^14.0.0",
     "fs-extra": "^11.3.1",
     "handlebars": "^4.7.8",
-    "inquirer": "^12.9.3"
+    "inquirer": "^12.9.3",
+    "tar-stream": "^3.1.7"
   }
 }
